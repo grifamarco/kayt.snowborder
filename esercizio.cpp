@@ -9,6 +9,7 @@ struct s_KaytSnowborder
     int mat;//numero atleta.
     string cogn;//cognome atleta.
     int coordinate;//coordinate rilevate(x e y).
+    int kiloperc;//kilometri percorsi.
 } KaytSnowborder, vet_KaytSnowborder[20];
 
 int genera_coordinate()
@@ -29,7 +30,7 @@ int genera_coordinate()
     return distanza;
 }
 
-void carica_vettore(s_KaytSnowborder vet_KaytSnowborder[])
+void carica_vettore()
 {
     ifstream fin("ATLETI.txt",ios::in);
     string appoggio;
@@ -44,10 +45,11 @@ void carica_vettore(s_KaytSnowborder vet_KaytSnowborder[])
     fin.close();
 }
 
-void file_stampato(s_KaytSnowborder vet_KaytSnowborder[])
+void file_stampato()
 {
+    carica_vettore();
     ofstream fout("ATLETI.txt");
-    for(int i=0; i<2; i++)
+    for(int i=0; i<7; i++)
     {
         fout<<endl<<vet_KaytSnowborder[i].mat<<" "<<vet_KaytSnowborder[i].cogn<<" ";
     }
@@ -57,13 +59,59 @@ void file_stampato(s_KaytSnowborder vet_KaytSnowborder[])
 /*
 void podio()
 {
-    ofstream fout("ATLETI.txt");
-    
+    //ofstream fout("ATLETI.txt");
+    int campione1=vet_KaytSnowborder[0].kiloperc;
+    int campione2=0;
+    int campione3=0;
+    int primo=0;
+    int secondo=0;
+    int terzo=0;
     cout<<"PODIO:";
-    for(int i=0; i<3; i++)
+    for(int i=0; i<7; i++)
     {
-        
+        if(vet_KaytSnowborder[i].kiloperc>primo)
+        {
+            campione1=vet_KaytSnowborder[i].kiloperc;
+            primo=i;
+        }
     }
+    cout<<"\n Al primo posto si è classificato:"<<vet_KaytSnowborder[primo].mat<<" "<<vet_KaytSnowborder[primo].cogn<<"Kilometri percorsi dall'atleta: "<<vet_KaytSnowborder[primo].kiloperc<<"km";
+    
+    for(int i=0; i<7; i++)
+    {
+        if(vet_KaytSnowborder[i].kiloperc<campione1)
+        {
+            campione2=vet_KaytSnowborder[i].kiloperc;
+            for(int i=0; i<7; i++)
+            {
+                if(vet_KaytSnowborder[i].kiloperc>campione2 && vet_KaytSnowborder[i].kiloperc<campione1)
+                {
+                    campione2=vet_KaytSnowborder[i].kiloperc;
+                    secondo=i;
+                }
+            }
+            
+        }
+    }
+    cout<<"\n Al secondo posto si è classificato:"<<vet_KaytSnowborder[secondo].mat<<" "<<vet_KaytSnowborder[secondo].cogn<<"Kilometri percorsi dall'atleta: "<<vet_KaytSnowborder[secondo].kiloperc<<"km";
+    
+    for(int i=0;i<7;i++)
+    {
+        if(vet_KaytSnowborder[i].kiloperc<campione2)
+        {
+            campione3=vet_KaytSnowborder[i].kiloperc;
+            for(int i=0;i<7;i++)
+            {
+                if(vet_Snowborder[i].kiloperc>campione3 && vet_KaytSnowborder[i].kiloperc<campione2)
+                {
+                    campione3=vet_KaytSnowborder[i].kiloperc;
+                    terzo=i;
+                }
+            }
+        }
+    }
+    cout<<"\n Al terzo posto si è classificato:"<<vet_KaytSnowborder[terzo].mat<<" "<<vet_KaytSnowborder[terzo].cogn<<"Kilometri percorsi dall'atleta: "<<vet_KaytSnowborder[terzo].kiloperc<<"km"<<"\n";
+    cout<<"Questi 3 sono gli atleti che sono saliti sul podio."<<endl;
 }
 */
 int main()
@@ -78,7 +126,7 @@ int main()
             cin>>scelta;
             switch(scelta){
                 case 1:
-                        file_stampato(vet_KaytSnowborder);
+                        file_stampato();
                         break;
                 case 2:
                         //podio();
