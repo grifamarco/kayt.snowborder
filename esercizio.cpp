@@ -1,22 +1,35 @@
+/*!
+\file main.cpp
+\brief implementazione del file main
+\author M.Grifa
+\date 27/02/2023
+*/
+
+
 #include <iostream>
 #include <fstream>
 #include <cmath>
 using namespace std;
 
-
+/*!
+\struc s_KaytSnowborder
+\brief nella struttura ci andiamo a dichiarare le varie variabili
+*/
 struct s_KaytSnowborder
 {
-    int mat;
-    string cogn;
-    
-    int x[30];
-    int y[30];
-    int kiloperc;
+    int mat;//! \var mat \brief numero della matricola
+    string cogn;//! \var cogn \brief cognome dell'atleta
+    int x[30];//! \var x \brief coordinata(x)
+    int y[30];//! \var y \brief coordinata(y)
+    int kiloperc;//! \var kiloperc \brief kilometri percorsi dall'atleta
 } KaytSnowborder, vet_KaytSnowborder[20];
 
 
 
-
+/*!
+\fn carica_vettore
+\brief in questa funzione carico gli elementi del file nel vettore
+*/
 void carica_vettore()
 {
     ifstream fin("atleti.txt",ios::in);
@@ -33,6 +46,11 @@ void carica_vettore()
     }
     fin.close();
 }
+
+/*!
+\fn calcola
+\brief in questa funzione vado a calcolare le distanze percorse dai vari atleti
+*/
 
 void calcola()
 {
@@ -55,6 +73,10 @@ void calcola()
     }
 }
 
+/*!
+\fn file_stampato
+\brief in questa funzione stampo gli elementi del file
+*/
 void file_stampato()
 {
     
@@ -67,6 +89,10 @@ void file_stampato()
     }    fin.close();
 }
 
+/*!
+\fn podio
+\brief in questa funzione mi vado a calcolare gli atleti che sono arrivati nelle prime 3 posizioni
+*/
 
 void podio()
 {
@@ -93,6 +119,10 @@ void podio()
     cout<<"Questi 3 sono gli atleti che sono saliti sul podio."<<endl;
 }
 
+/*!
+\fn main
+\brief in questa funzione vado a visualizzare le varie scelte che metteremo a disposizione dell'utente
+*/
 int main()
 {
     int scelta;
