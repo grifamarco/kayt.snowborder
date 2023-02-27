@@ -6,12 +6,12 @@ using namespace std;
 
 struct s_KaytSnowborder
 {
-    int mat;//numero atleta.
-    string cogn;//cognome atleta.
-    //int coordinate;//coordinate rilevate(x e y).
+    int mat;
+    string cogn;
+    
     int x[30];
     int y[30];
-    int kiloperc;//kilometri percorsi.
+    int kiloperc;
 } KaytSnowborder, vet_KaytSnowborder[20];
 
 
@@ -57,8 +57,7 @@ void calcola()
 
 void file_stampato()
 {
-    //carica_vettore();
-    //ofstream fout("atleti.txt");
+    
     string s;
     ifstream fin("atleti.txt",ios::in);
     while(!fin.eof())
@@ -71,7 +70,7 @@ void file_stampato()
 
 void podio()
 {
-    //ofstream fout("ATLETI.txt");
+    
     calcola();
     s_KaytSnowborder temp;
     s_KaytSnowborder *vet_ordinato=vet_KaytSnowborder;
